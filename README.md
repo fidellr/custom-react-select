@@ -184,6 +184,6 @@ export const MyComponent = () => {
 ```bash
 npm install     # Install dependencies
 npm run dev     # Launch Storybook environment
-npm run build   # Generate production /dist folder
+npm run build:lib   # Generate production /dist folder
 
 ```
