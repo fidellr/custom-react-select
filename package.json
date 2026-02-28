@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A lightweight, portal-ready custom select component",
   "private": false,
+  "workspaces": [
+    ".",
+    "demo"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -11,8 +15,10 @@
   ],
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "tsup",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "build:lib": "tsup",
+    "build:demo": "npm run build:lib && npm run build -w demo",
+    "install:all": "npm install"
   },
   "peerDependencies": {
     "react": ">=18",
