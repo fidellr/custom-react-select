@@ -2,6 +2,9 @@
 
 A high-performance, customizable, accessible, and fully typed Select component built with **React**, **TypeScript**, and **Tailwind CSS**. Designed to handle complex data structures with full keyboard navigation support and smart data detection.
 
+Demo: https://custom-react-select.vercel.app/
+Storybook: https://69a34181e9e3af47ece88f0e-rvpaodmxyj.chromatic.com
+
 ## Features
 
 - Automatically detects labels and unique IDs from your data objects (supports `id`, `value`, `name`, and `label` keys).
@@ -11,7 +14,7 @@ A high-performance, customizable, accessible, and fully typed Select component b
 - **Multi-Select**: Toggle between single selection and chip-based multi-selection with ease.
 - **Tailwind Powered**: Style-ready with standard Tailwind classes and easy theme overrides. 
 
-(PS: You don't required to install tailwindcss on your main app to use this component)
+(PS: You don't need to install tailwindcss on your main app to use this component)
 
 ---
 ## Installation & Demo
