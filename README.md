@@ -31,7 +31,7 @@ To see the component in action within a live React application:
 ```bash
 # This builds the library first, then starts the demo
 npm run build && npm run start -w demo
-The demo will be available at http://localhost:3000.
+# The demo will be available at http://localhost:3000.
 ```
 
 3. Run Development Environment (Storybook)
