@@ -2,8 +2,8 @@
 
 A high-performance, customizable, accessible, and fully typed Select component built with **React**, **TypeScript**, and **Tailwind CSS**. Designed to handle complex data structures with full keyboard navigation support and smart data detection.
 
-Demo: https://custom-react-select.vercel.app/
-Storybook: https://69a34181e9e3af47ece88f0e-rvpaodmxyj.chromatic.com
+- Demo: https://custom-react-select.vercel.app/
+- Storybook: https://69a34181e9e3af47ece88f0e-rvpaodmxyj.chromatic.com
 
 ## Features
 
