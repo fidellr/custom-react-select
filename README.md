@@ -2,8 +2,8 @@
 
 A high-performance, customizable, accessible, and fully typed Select component built with **React**, **TypeScript**, and **Tailwind CSS**. Designed to handle complex data structures with full keyboard navigation support and smart data detection.
 
-- Demo: https://custom-react-select.vercel.app/
-- Storybook: https://69a34181e9e3af47ece88f0e-rvpaodmxyj.chromatic.com
+Demo: https://custom-react-select.vercel.app/
+Storybook: https://69a34181e9e3af47ece88f0e-rvpaodmxyj.chromatic.com
 
 ## Features
 
@@ -176,26 +176,6 @@ export const MyComponent = () => {
     </tr>
   </tbody>
 </table>
-
----
-
-## Tailwind Configuration (Optional)
-
-if you use tailwind on your main app, you need to update your `tailwind.config.js` to ensure the component's utility classes are generated (or else see the demo folder):
-
-```javascript
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/custom-react-select/dist/**/*.js",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-```
 
 ---
 
