@@ -6,7 +6,7 @@ export default defineConfig({
   dts: true,
   clean: true,
   splitting: false,
-  minify: true, // Minify to keep the injected JS small
+  minify: true,
   external: ["react", "react-dom"],
-  injectStyle: true, // This wraps the CSS in a JS function that injects a <style> tag
+  injectStyle: true,
 });

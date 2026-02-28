@@ -9,7 +9,9 @@ A high-performance, customizable, accessible, and fully typed Select component b
 - Uses React Portals to prevent `z-index` or `overflow: hidden` clipping in complex layouts.
 - **Searchable**: Integrated search with fuzzy filtering and text highlighting.
 - **Multi-Select**: Toggle between single selection and chip-based multi-selection with ease.
-- **Tailwind Powered**: Style-ready with standard Tailwind classes and easy theme overrides.
+- **Tailwind Powered**: Style-ready with standard Tailwind classes and easy theme overrides. 
+
+(PS: You don't required to install tailwindcss on your main app to use this component)
 
 ---
 
@@ -22,14 +24,12 @@ Since this package is not yet on NPM, you can use it in your project via `npm li
 ```bash
 npm run build
 npm link
-
 ```
 
 2. **In your main application folder:**
 
 ```bash
 npm link custom-react-select
-
 ```
 
 ---
@@ -172,9 +172,9 @@ export const MyComponent = () => {
 
 ---
 
-## Tailwind Configuration
+## Tailwind Configuration (Optional)
 
-Update your `tailwind.config.js` to ensure the component's utility classes are generated:
+if you use tailwind on your main app, you need to update your `tailwind.config.js` to ensure the component's utility classes are generated (or else see the demo folder):
 
 ```javascript
 /** @type {import('tailwindcss').Config} */
