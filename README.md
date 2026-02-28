@@ -14,24 +14,28 @@ A high-performance, customizable, accessible, and fully typed Select component b
 (PS: You don't required to install tailwindcss on your main app to use this component)
 
 ---
+## Installation & Demo
+This project uses NPM Workspaces to manage both the library and a demo application in a single repository. This ensures a consistent development environment and prevents duplicate React instances.
 
-## Installation (Local)
-
-Since this package is not yet on NPM, you can use it in your project via `npm link`:
-
-1. **In this project folder:**
-
+1. Initial Setup
+From the root directory, install all dependencies for both the library and the demo app:
 ```bash
-npm run build
-npm link
+npm install
 ```
 
-2. **In your main application folder:**
-
+2. Run the Demo App
+To see the component in action within a live React application:
 ```bash
-npm link custom-react-select
+# This builds the library first, then starts the demo
+npm run build && npm run start -w demo
+The demo will be available at http://localhost:3000.
 ```
 
+3. Run Development Environment (Storybook)
+To explore the component in isolation with various states (Disabled, Error, Multi-select, etc.):
+```bash
+npm run dev
+```
 ---
 
 ## Quick Start
