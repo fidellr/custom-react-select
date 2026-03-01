@@ -71,13 +71,11 @@ export const SelectDropdown = <T,>({
 
   const styles: React.CSSProperties = usePortal
     ? {
-        position: "absolute",
         top: coords.top,
         left: coords.left,
         width: coords.width,
       }
     : {
-        position: "absolute",
         top: "100%",
         left: 0,
         right: 0,
@@ -115,7 +113,7 @@ export const SelectDropdown = <T,>({
   const content = (
     <div
       ref={dropdownRef}
-      style={styles}
+      style={{ position: "absolute", ...styles }}
       className="z-[9999] bg-white border border-gray-200 rounded-md shadow-lg flex flex-col overflow-hidden"
     >
       {withSearch && (
