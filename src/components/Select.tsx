@@ -1,12 +1,12 @@
 import { useState, useRef, useCallback, useId, useMemo } from "react";
 import { ChevronDown } from "lucide-react";
 import { clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
 
 import { usePosition } from "../hooks/usePosition";
 import { useClickOutside } from "../hooks/useClickOutside";
 import { SelectValue } from "./SelectValue";
 import { SelectDropdown } from "./SelectDropdown";
+import { cn } from "../utils/cn";
 
 export interface SelectProps<T = any> {
   id?: string;
@@ -190,21 +190,17 @@ export const Select = <T,>({
       "border-gray-300 hover:border-gray-400 focus:ring-2 focus:ring-teal-100 cursor-pointer",
   };
 
-  const triggerClassName = twMerge(
-    clsx(
-      "flex items-center justify-between min-h-[40px] w-full px-3 py-1.5 transition-all outline-none bg-white",
-      outlined ? "border-2 rounded-lg" : "border rounded-md shadow-sm",
-      stateClasses[interactionState],
-      className,
-    ),
+  const triggerClassName = cn(
+    "flex items-center justify-between min-h-[40px] w-full px-3 py-1.5 transition-all outline-none bg-white",
+    outlined ? "border-2 rounded-lg" : "border rounded-md shadow-sm",
+    stateClasses[interactionState],
+    className,
   );
   return (
     <div
-      className={twMerge(
-        clsx(
-          "relative w-full max-w-md font-sans flex flex-col gap-1",
-          containerClassName,
-        ),
+      className={cn(
+        "relative w-full max-w-md font-sans flex flex-col gap-1",
+        containerClassName,
       )}
       ref={containerRef}
       onKeyDown={handleKeyDown}
@@ -264,7 +260,7 @@ export const Select = <T,>({
         </div>
         <ChevronDown
           size={16}
-          className={clsx(
+          className={cn(
             "flex-shrink-0 transition-transform duration-200",
             isOpen && "rotate-180",
             disabled ? "text-gray-300" : "text-gray-400",

@@ -27,10 +27,14 @@ const highlightMatch = (text: string, highlight: string) => {
 const getOptionClassName = (isActive: boolean, isSelected: boolean) => {
   return clsx(
     "px-4 py-2 text-sm cursor-pointer transition-colors",
-    isActive && !isSelected && "bg-gray-100",
-    !isActive && !isSelected && "hover:bg-gray-50",
-    isSelected && "text-teal-900 bg-teal-50 font-medium",
-    isActive && isSelected && "bg-teal-100",
+    isSelected && "text-teal-900 font-medium",
+    isActive && isSelected
+      ? "bg-teal-100"
+      : isSelected
+        ? "bg-teal-50"
+        : isActive
+          ? "bg-gray-100"
+          : "hover:bg-gray-50",
   );
 };
 
