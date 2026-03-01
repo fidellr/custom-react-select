@@ -4,7 +4,6 @@
   "description": "A lightweight, portal-ready custom select component",
   "private": false,
   "workspaces": [
-    ".",
     "demo"
   ],
   "main": "dist/index.js",
@@ -14,11 +13,12 @@
     "dist"
   ],
   "scripts": {
+    "install:all": "npm install",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build:lib": "tsup",
     "build:demo": "npm run build:lib && npm run build -w demo",
-    "install:all": "npm install"
+    "prepare": "npm run build:lib"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -44,5 +44,12 @@
     "tailwindcss": "^3.4.19",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   }
 }

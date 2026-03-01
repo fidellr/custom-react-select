@@ -39,6 +39,18 @@ To explore the component in isolation with various states (Disabled, Error, Mult
 ```bash
 npm run dev
 ```
+
+## Installation (via GitHub)
+Since this package is not published to the public NPM registry, you can install it directly from this GitHub repository. 
+
+Because the repository is configured with a `prepare` script, NPM will automatically compile the TypeScript and Tailwind styles into a clean `dist/` folder during installation. **You do not need to install Tailwind CSS or configure PostCSS in your application.**
+
+Run the following command in your React project's terminal:
+
+```bash
+npm install github:fidellr/custom-react-select
+```
+
 ---
 
 ## Quick Start
