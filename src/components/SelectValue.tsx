@@ -1,5 +1,4 @@
 import { X } from "lucide-react";
-import { twMerge } from "tailwind-merge";
 import { clsx } from "clsx";
 
 interface SelectValueProps<T> {
@@ -18,10 +17,12 @@ export const SelectValue = <T,>({
   getOptionLabel,
   getOptionValue,
   onRemove,
-  disabled,
+  disabled = false,
   placeholder,
 }: SelectValueProps<T>) => {
-  if (!value || (multiple && Array.isArray(value) && value.length === 0)) {
+  const isEmpty =
+    !value || (multiple && Array.isArray(value) && value.length === 0);
+  if (isEmpty) {
     return <span className="text-gray-400 select-none">{placeholder}</span>;
   }
 
@@ -29,26 +30,27 @@ export const SelectValue = <T,>({
     return <span className="truncate">{getOptionLabel(value as T)}</span>;
   }
 
-  const values = Array.isArray(value) ? value : [];
+  const selectedValues = Array.isArray(value) ? value : [];
+
+  const chipClassName = clsx(
+    "flex items-center gap-1 text-sm px-2 py-0.5 rounded-full truncate max-w-full border",
+    disabled
+      ? "opacity-70 bg-gray-200 border-gray-300"
+      : "bg-gray-100 border-gray-200",
+  );
 
   return (
     <div className="flex flex-wrap gap-1">
-      {values.map((val) => (
-        <span
-          key={getOptionValue(val)}
-          className={twMerge(
-            clsx(
-              "flex items-center gap-1 bg-gray-100 border border-gray-200 text-sm px-2 py-0.5 rounded-full truncate max-w-full",
-              disabled && "opacity-70 bg-gray-200",
-            ),
-          )}
-        >
+      {selectedValues.map((val) => (
+        <span key={getOptionValue(val)} className={chipClassName}>
           <span className="truncate">{getOptionLabel(val)}</span>
+
           {!disabled && (
             <button
               type="button"
               onClick={(e) => onRemove(e, val)}
               className="hover:bg-gray-200 rounded-full p-0.5 transition-colors focus:outline-none focus:ring-1 focus:ring-teal-500"
+              aria-label={`Remove ${getOptionLabel(val)}`}
             >
               <X size={12} />
             </button>

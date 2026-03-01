@@ -2,6 +2,7 @@ import { useState, useRef, useCallback, useId, useMemo } from "react";
 import { ChevronDown } from "lucide-react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+
 import { usePosition } from "../hooks/usePosition";
 import { useClickOutside } from "../hooks/useClickOutside";
 import { SelectValue } from "./SelectValue";
@@ -13,18 +14,15 @@ export interface SelectProps<T = any> {
   options: T[];
   value?: T | T[] | null;
   onChange: (value: any) => void;
-
   label?: React.ReactNode;
   placeholder?: string;
   searchPlaceholder?: string;
   required?: boolean;
   disabled?: boolean;
   error?: string | boolean;
-
   className?: string;
   containerClassName?: string;
   outlined?: boolean;
-
   withSearch?: boolean;
   multiple?: boolean;
   usePortal?: boolean;
@@ -136,6 +134,7 @@ export const Select = <T,>({
     const optionId = getOptionValue(option);
     onChange(current.filter((v) => getOptionValue(v) !== optionId));
   };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (disabled) return;
     if (!isOpen) {
@@ -175,11 +174,37 @@ export const Select = <T,>({
     }
   };
 
+  const interactionState = disabled
+    ? "disabled"
+    : error
+      ? "error"
+      : isOpen
+        ? "open"
+        : "default";
+
+  const stateClasses = {
+    disabled: "bg-gray-50 cursor-not-allowed opacity-70 border-gray-300",
+    error: "border-red-500 ring-red-200 focus:ring-2 cursor-pointer",
+    open: "border-teal-500 ring-1 ring-teal-500 cursor-pointer",
+    default:
+      "border-gray-300 hover:border-gray-400 focus:ring-2 focus:ring-teal-100 cursor-pointer",
+  };
+
+  const triggerClassName = twMerge(
+    clsx(
+      "flex items-center justify-between min-h-[40px] w-full px-3 py-1.5 transition-all outline-none bg-white",
+      outlined ? "border-2 rounded-lg" : "border rounded-md shadow-sm",
+      stateClasses[interactionState],
+      className,
+    ),
+  );
   return (
     <div
       className={twMerge(
-        "relative w-full max-w-md font-sans flex flex-col gap-1",
-        containerClassName,
+        clsx(
+          "relative w-full max-w-md font-sans flex flex-col gap-1",
+          containerClassName,
+        ),
       )}
       ref={containerRef}
       onKeyDown={handleKeyDown}
@@ -191,7 +216,7 @@ export const Select = <T,>({
           onClick={() =>
             !disabled && (triggerRef.current?.focus(), setIsOpen(true))
           }
-          className={twMerge(
+          className={clsx(
             "block text-sm font-medium transition-colors select-none",
             disabled
               ? "text-gray-400 cursor-not-allowed"
@@ -224,21 +249,7 @@ export const Select = <T,>({
         aria-disabled={disabled}
         tabIndex={disabled ? -1 : 0}
         onClick={() => !disabled && setIsOpen(!isOpen)}
-        className={twMerge(
-          clsx(
-            "flex items-center justify-between min-h-[40px] w-full px-3 py-1.5 transition-all outline-none bg-white",
-            outlined ? "border-2 rounded-lg" : "border rounded-md shadow-sm",
-            disabled
-              ? "bg-gray-50 cursor-not-allowed opacity-70"
-              : "cursor-pointer",
-            error
-              ? "border-red-500 ring-red-200 focus:ring-2"
-              : isOpen
-                ? "border-teal-500 ring-1 ring-teal-500"
-                : "border-gray-300 hover:border-gray-400 focus:ring-2 focus:ring-teal-100",
-            className,
-          ),
-        )}
+        className={triggerClassName}
       >
         <div className="flex-1 overflow-hidden pr-2">
           <SelectValue<T>
@@ -253,12 +264,10 @@ export const Select = <T,>({
         </div>
         <ChevronDown
           size={16}
-          className={twMerge(
-            clsx(
-              "flex-shrink-0 transition-transform duration-200",
-              isOpen && "rotate-180",
-              disabled ? "text-gray-300" : "text-gray-400",
-            ),
+          className={clsx(
+            "flex-shrink-0 transition-transform duration-200",
+            isOpen && "rotate-180",
+            disabled ? "text-gray-300" : "text-gray-400",
           )}
         />
       </div>
